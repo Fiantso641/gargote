@@ -28,3 +28,26 @@ toutes les lignes enfants qui y sont liées sont également supprimées pour mai
 3. Insertion d'une commande_ligne avec une quantité négative 
 4. Insertion d'une catégorie avec un libellé vide 
 
+# 0.3 Interroger l’API à la main
+# a) liste des soupes
+ - curl http://localhost:8080/api/plats?categorie=2: 200 listes des plats de la categorie 2
+
+# b) création d'un plat valide
+ - curl -X POST http://localhost:8080/api/plats \
+  -H "Content-Type: application/json" \
+  -d '{"nom":"Mofo gasy","prix":300,"id_categorie":1}': 201 select une seule plat avec son categorie et prix
+
+# c) création d'un plat invalide
+ curl -X POST http://localhost:8080/api/plats \
+  -H "Content-Type: application/json" \
+  -d '{"nom":"","prix":"cher"}': 422 les données sont invalides il faut complétez le champ nom, le prix doit etre nombre entier et il faut choisir une categorie
+
+
+
+# d) suppression d'un plat présent dans une commande
+  - curl -X DELETE http://localhost:8080/api/plats/2: 409 conflict car les lignes de commande qui le référencent doivent être supprimées en premier
+
+# e) une commande qui n'existe pas
+  - curl http://localhost:8080/api/commandes/999  404 not found
+
+
