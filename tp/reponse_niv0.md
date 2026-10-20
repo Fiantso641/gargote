@@ -35,7 +35,7 @@ toutes les lignes enfants qui y sont liées sont également supprimées pour mai
 # b) création d'un plat valide
  - curl -X POST http://localhost:8080/api/plats \
   -H "Content-Type: application/json" \
-  -d '{"nom":"Mofo gasy","prix":300,"id_categorie":1}': 201 select une seule plat avec son categorie et prix
+  -d '{"nom":"Mofo gasy","prix":300,"id_categorie":1}': 201 donnée créer avec succés
 
 # c) création d'un plat invalide
  curl -X POST http://localhost:8080/api/plats \
